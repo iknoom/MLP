@@ -106,43 +106,6 @@ MLP xor_gate(int n) {
 	std::cout << "epoch : " << epoch << std::endl;
 	return XOR_gate;
 }
-MLP donut_gate() {
-	int data_size, layer_size, input_size, node_size;
-	data_size = 9;
-	input_size = 2;
-	layer_size = 3;
-	node_size = 3;
-
-	// 학습 데이터
-	float train_set_x[][2] = {
-		{0.,0.},
-		{0.,1.},
-		{1.,0.},
-		{1.,1.},
-		{0.5,1.},
-		{1.,0.5},
-		{0.,0.5},
-		{0.5,0.},
-		{0.5,0.5}
-	};
-	float train_set_y[] = { 0,0,0,0,0,0,0,0,1 };
-
-	// 학습 시작
-	MLP DONUT_gate = MLP(layer_size, input_size, node_size);
-	int epoch = 0;
-	while (true) {
-		epoch++;
-		double sum_error = 0;
-		for (int i = 0; i < data_size; i++) {
-			DONUT_gate.predict({ train_set_x[i][0], train_set_x[i][1] }, train_set_y[i]);
-			DONUT_gate.learn();
-			sum_error += DONUT_gate.loss();
-		}
-		if (sum_error < 0.01) break;
-	}
-	std::cout << "epoch : " << epoch << std::endl;
-	return DONUT_gate;
-}
 
 int main() {
 	int bit_size = 2;
