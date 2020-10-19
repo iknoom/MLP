@@ -1,2 +1,1 @@
-# MLP
- Multi layer perceptron with cpp
+# Multilayer perceptron
